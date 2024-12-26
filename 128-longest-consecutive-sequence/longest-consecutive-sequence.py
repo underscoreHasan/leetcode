@@ -11,8 +11,7 @@ class Solution:
         for i in nums:
             if i-1 not in numsMap:
                 starters.append(i)
-        print(starters)
-        
+
         for i in starters:
             length = 0
             key = i
