@@ -1,11 +1,8 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
          #while key in map
-        numsMap = {}
+        numsMap = set(nums)
         res = 0
-
-        for i in nums:
-            numsMap[i] = None
         
         starters = []
         for i in nums:
