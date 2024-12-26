@@ -10,16 +10,13 @@ class Solution:
         starters = []
         for i in nums:
             if i-1 not in numsMap:
-                starters.append(i)
-
-        for i in starters:
-            length = 0
-            key = i
-            while key in numsMap:
-                length += 1
-                key += 1
-            if length >= res:
-                res = length
-        
+                length = 0
+                key = i
+                while key in numsMap:
+                    length += 1
+                    key += 1
+                if length >= res:
+                    res = length
+            
         return res
 
