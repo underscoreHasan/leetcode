@@ -1,19 +1,15 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
          #while key in map
-        numsMap = set(nums)
+        numsSet = set(nums)
         res = 0
-        
-        starters = []
+
         for i in nums:
-            if i-1 not in numsMap:
-                length = 0
-                key = i
-                while key in numsMap:
-                    length += 1
+            if i-1 not in numsSet:
+                key = i + 1
+                while key in numsSet:
                     key += 1
-                if length >= res:
-                    res = length
+                res = max(res, key - i)
             
         return res
 
