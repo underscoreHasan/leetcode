@@ -7,7 +7,7 @@ class Solution:
         res = 0
 
         while l < r:
-            if height[l]<height[r]:
+            if maxL<maxR:
                 res += min(maxL, maxR) - height[l]
                 l += 1
                 maxL = max(maxL, height[l])
