@@ -3,7 +3,7 @@ class Solution:
         res = 0
 
         for word in words:
-            if pref == word[:len(pref)]:
+            if word.startswith(pref):
                 res += 1
 
         return res
