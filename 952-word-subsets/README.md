@@ -32,7 +32,7 @@
 <div class="example-block">
 <p><strong>Input:</strong> <span class="example-io">words1 = [&quot;acaac&quot;,&quot;cccbb&quot;,&quot;aacbb&quot;,&quot;caacc&quot;,&quot;bcbbb&quot;], words2 = [&quot;c&quot;,&quot;cc&quot;,&quot;b&quot;]</span></p>
 
-<p><strong>Output:</strong> <span class="example-io">[&quot;facebook&quot;,&quot;google&quot;]</span></p>
+<p><strong>Output:</strong> <span class="example-io">[&quot;cccbb&quot;]</span></p>
 </div>
 
 <p>&nbsp;</p>
