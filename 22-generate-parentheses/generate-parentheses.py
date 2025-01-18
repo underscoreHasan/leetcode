@@ -6,18 +6,19 @@ class Solution:
             openBr = 0
             for c in s:
                 openBr += 1 if c == "(" else -1
-                if openBr < 0:
-                    return False
-            return not openBr
+            return openBr
 
         def dfs(s: str):
             if len(s) == 2*n:
-                if isValid(s):
+                if isValid(s) == 0:
                     res.append(s)
                 return
-
-            dfs(s + "(")
-            dfs(s + ")")
+            
+            if isValid(s) < 0:
+                return
+            else:
+                dfs(s + "(")
+                dfs(s + ")")
 
         dfs("")
 
