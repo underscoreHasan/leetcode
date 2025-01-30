@@ -1,33 +1,39 @@
 class Solution:
-    # Performs DFS and returns True if there's a path between src and target.
-    def _is_connected(self, src, target, visited, adj_list):
-        visited[src] = True
-
-        if src == target:
-            return True
-
-        is_found = False
-        for adj in adj_list[src]:
-            if not visited[adj]:
-                is_found = is_found or self._is_connected(
-                    adj, target, visited, adj_list
-                )
-
-        return is_found
-
-    def findRedundantConnection(self, edges):
+    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
         N = len(edges)
+        size = [1]*N
+        rep = [i for i in range(N)]
 
-        adj_list = [[] for _ in range(N)]
+        def find(node):
+            if node == rep[node]:
+                return node
+            rep[node] = find(rep[node])
+            return rep[node]
 
-        for edge in edges:
-            visited = [False] * N
+        def doUnion(node1, node2):
+            node1, node2 = find(node1), find(node2)
 
-            # If DFS returns True, we will return the edge.
-            if self._is_connected(edge[0] - 1, edge[1] - 1, visited, adj_list):
-                return edge
+            if node1 == node2:
+                return False
+            else:
+                if size[node1] > size[node2]:
+                    rep[node2] = rep[node1]
+                    size[node1] += size[node2]
+                else:
+                    rep[node1] = rep[node2]
+                    size[node2] += size[node1]
+                return True
 
-            adj_list[edge[0] - 1].append(edge[1] - 1)
-            adj_list[edge[1] - 1].append(edge[0] - 1)
+        for e in edges:
+            node1 = e[0]-1
+            node2 = e[1]-1
 
+            if not doUnion(node1, node2):
+                return e
+            
         return []
+
+        
+
+
+                
