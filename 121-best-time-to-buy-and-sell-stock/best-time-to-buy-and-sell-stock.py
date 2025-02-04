@@ -1,10 +1,16 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        maxP = [0]*len(prices)
-        minBuy = prices[0]
+        l, r = 0, 1
+        maxP = 0
 
-        for i, sell in enumerate(prices):
-            maxP[i] = sell - minBuy
-            minBuy = min(minBuy, sell)
-
-        return max(maxP)
+        while r < len(prices):
+            if prices[r] > prices[l]:
+                p = prices[r] - prices[l]
+                maxP = max(maxP, p)
+                r += 1
+            else:
+                l += 1
+                if l >= r:
+                    r+=1
+        
+        return maxP
