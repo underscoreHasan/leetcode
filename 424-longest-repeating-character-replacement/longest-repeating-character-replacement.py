@@ -12,6 +12,7 @@ class Solution:
 
             #make sure that current window is valid
             #it is valid when the window only requires a max of k replacements
+            #if vs while?
             if ((r-l+1) - max(counts.values())) > k:
                 counts[s[l]] -= 1
                 l += 1
