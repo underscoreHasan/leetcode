@@ -10,13 +10,13 @@ class Solution:
         #if increasing by only +1, its a good pair
         #if nums[i+1] > nums[i] by more than 1, all subsequent pairs are bad pairs
 
-        res = 0
+        res = len(nums)*(len(nums)-1)/2
         #for each index, calculate the difference nums[i]-i
         #calculate how many times the same difference occurs
         diffs = defaultdict(int)
 
         for i in range(len(nums)):
-            res += i - diffs[nums[i] - i]
+            res -= diffs[nums[i] - i]
             diffs[nums[i]-i] += 1
         
         return int(res)
