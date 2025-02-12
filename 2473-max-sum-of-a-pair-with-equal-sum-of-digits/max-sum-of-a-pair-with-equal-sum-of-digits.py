@@ -6,7 +6,7 @@ class Solution:
         #[10,12,19,14]
         #[1,3,10,5]
         #{1:[0], 3:[1], 10:[2], 5:[3]}
-        digitSums = defaultdict(int)
+        digitSums = defaultdict(list)
         res = -1
         
         def sumDigits(n):
@@ -17,15 +17,11 @@ class Solution:
 
         for n in nums:
             k = sumDigits(n)
-            if k in digitSums:
-                res = max(res, n + digitSums[k])
-                digitSums[k] = max(digitSums[k], n)
-            else:
-                digitSums[k] = n
-        
-        return res
-            
+            heapq.heappush(digitSums[k], -n)
+
+        for v in digitSums.values():
+            if len(v) < 2:
+                continue
+            res = max(res, -heapq.heappop(v) + -heapq.heappop(v))
 
         return res
-
-
