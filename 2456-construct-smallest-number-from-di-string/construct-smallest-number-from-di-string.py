@@ -2,19 +2,29 @@ class Solution:
     def smallestNumber(self, pattern: str) -> str:
         stack = []
         res = []
-        i = 0
         n = len(pattern)
-        
-        # Loop from 0 to n (inclusive) because we need to process n+1 numbers
+        i = 0
+
         while i < n + 1:
+            # Always push the next number onto the stack.
             stack.append(str(i + 1))
-            
-            # When we hit an "I" or we've processed all characters in the pattern,
-            # pop all elements from the stack and append them to the result.
-            if i == n or pattern[i] == "I":
+
+            # If we're at the end of the pattern, flush the stack.
+            if i == n:
                 while stack:
                     res.append(stack.pop())
-                    
+            else:
+                # Explicit condition when an "I" is encountered.
+                if pattern[i] == "I":
+                    while stack:
+                        res.append(stack.pop())
+                # Explicit condition when a "D" is encountered.
+                elif pattern[i] == "D":
+                    # When a "D" is encountered, we do not flush the stack.
+                    # The stack will be flushed later when an "I" is encountered
+                    # or at the end of the loop.
+                    pass
+
             i += 1
-        
+
         return "".join(res)
