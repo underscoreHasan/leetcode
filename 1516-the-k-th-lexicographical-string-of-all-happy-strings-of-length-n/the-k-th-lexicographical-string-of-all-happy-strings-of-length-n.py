@@ -1,7 +1,7 @@
 class Solution:
     def getHappyString(self, n: int, k: int) -> str:
-        letters = ['a', 'b', 'c']
         res = []
+        letters = ['a','b','c']
 
         def genNext(s: str) -> list[str]:
             res = []
@@ -19,7 +19,6 @@ class Solution:
                 candidates.extend(genNext(i))
             curr = candidates
         
-        print(res)
         return res[k-1] if k <= len(res) else ""
             
                     
