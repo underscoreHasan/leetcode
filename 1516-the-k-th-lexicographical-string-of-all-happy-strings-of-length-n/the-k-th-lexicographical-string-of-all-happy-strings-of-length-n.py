@@ -11,9 +11,10 @@ class Solution:
             return res
 
         curr = ['a','b','c']
-        while len(curr[0]) < n+1:
+        while len(curr[0]) <= n:
             if len(curr[0]) == n:
                 res.extend(curr)
+                break
             candidates=[]
             for i in curr:
                 candidates.extend(genNext(i))
