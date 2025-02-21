@@ -8,30 +8,20 @@ class FindElements:
 
     def __init__(self, root: Optional[TreeNode]):
         self.nodes = []
-
+        root.val = 0
         self.nodes.append(root)
         stack = []
         stack.append(root)
         while stack:
             curr = stack.pop()
             if curr and curr.left:
+                curr.left.val = 2 * curr.val + 1
                 self.nodes.append(curr.left)
                 stack.append(curr.left)
             if curr and curr.right:
+                curr.right.val = 2 * curr.val + 2
                 self.nodes.append(curr.right)
                 stack.append(curr.right)
-        
-        self.nodes[0].val = 0
-
-        for i in self.nodes:
-            if i:
-                x = i.val
-                if i.left:
-                    i.left.val = 2 * x + 1
-                if i.right:
-                    i.right.val = 2 * x + 2
-
-        print(self.nodes)        
 
     def find(self, target: int) -> bool:
         for i in self.nodes:
