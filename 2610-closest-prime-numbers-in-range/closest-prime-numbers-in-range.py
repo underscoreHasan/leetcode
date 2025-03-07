@@ -13,7 +13,6 @@ class Solution:
             p += 1
         
         primes = [i for i in range(left, right + 1) if sieve[i]]
-        print(primes)
 
         if len(primes) < 2:
             return [-1,-1]
