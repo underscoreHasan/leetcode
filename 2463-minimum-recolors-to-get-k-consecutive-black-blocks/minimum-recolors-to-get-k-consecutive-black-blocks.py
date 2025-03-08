@@ -8,9 +8,9 @@ class Solution:
         while r < len(blocks):
             sCount[blocks[r]] += 1
             sCount[blocks[l]] -= 1
+            minW = min(minW, sCount['W'])
             l+=1
             r+=1
-            minW = min(minW, sCount['W'])
 
         return minW
 
