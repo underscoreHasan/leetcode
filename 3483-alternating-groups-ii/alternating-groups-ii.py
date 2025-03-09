@@ -5,10 +5,9 @@ class Solution:
         #1101 => 1101         
         l, r = 0, 1
         res = 0
-        colors.extend(colors[:k-1])
 
-        while r < (len(colors)): #while right is less than length, meaning that we have more subarrays to check
-            if (colors[r-1] != colors[r]): #checking alternation
+        while r < (len(colors)+k-1): #while right is less than length, meaning that we have more subarrays to check
+            if (colors[(r-1)%len(colors)] != colors[r%len(colors)]): #checking alternation
                 if (r - l + 1) == k: #if the required window size is met
                     res += 1 #increase the res by 1
                     l += 1 #move the l pointer
