@@ -7,15 +7,15 @@ class Solution:
         res = 0
         colors.extend(colors[:k-1])
 
-        while r < (len(colors)):
+        while r < (len(colors)): #while right is less than length, meaning that we have more subarrays to check
             if (colors[r-1] != colors[r]): #checking alternation
-                if (r - l + 1) == k:
-                    res += 1
-                    l += 1
-                r += 1
-            else:
-                l = r
-                r += 1
+                if (r - l + 1) == k: #if the required window size is met
+                    res += 1 #increase the res by 1
+                    l += 1 #move the l pointer
+                r += 1 #move the right pointer if alternation holds
+            else: #alternation failed
+                l = r #skip l pointer ahead
+                r += 1 #increase window size to 1
 
         return res
 
