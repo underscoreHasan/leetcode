@@ -1,9 +1,13 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        numsHash = {}
+        # 2, 7, 11, 15
+        numsSet = defaultdict()
 
-        for i, n in enumerate(nums):
-            if target-n in numsHash:
-                return [i, numsHash[target-n]]
-            numsHash[n]=i
+        for i in range(len(nums)):
+            if target-nums[i] in numsSet:
+                return [i, numsSet[target-nums[i]]]
+            numsSet[nums[i]] = i
+
+
+            
         
