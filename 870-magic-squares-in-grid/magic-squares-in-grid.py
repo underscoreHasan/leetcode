@@ -35,15 +35,8 @@ class Solution:
         cond3 = sum(transpose[0]) == sum(transpose[1]) == sum(transpose[2])
 
         # 4
-        leadingDiag = 0
-        antiDiag = 0
-        for i in range(0, 3):
-            for j in range(0, 3):
-                if i == j:
-                    leadingDiag += submatrix[i][j]
-                if j == 2 - i:
-                    antiDiag += submatrix[i][j]
-
+        leadingDiag = sum(submatrix[i][i] for i in range(3))
+        antiDiag = sum(submatrix[i][2 - i] for i in range(3))
         cond4 = leadingDiag == antiDiag
 
         return cond1 and cond2 and cond3 and cond4
