@@ -1,19 +1,15 @@
 class Solution:
-    def checkForMagicSquares(grid, i, j):
-        return True
-
     def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
         numMagicSquares = 0
 
         numRows = len(grid)
         numCols = len(grid[0])
 
-        for i in range(numRows):
-            for j in range(numCols):
-                if (i + 2 < numRows) and (j + 2 < numCols):
-                    # print(i,j)
-                    if self.checkForMagicSquare(grid, i, j):
-                        numMagicSquares += 1
+        for i in range(numRows - 2):
+            for j in range(numCols - 2):
+                # print(i,j)
+                if self.checkForMagicSquare(grid, i, j):
+                    numMagicSquares += 1
 
         return numMagicSquares
 
@@ -27,6 +23,7 @@ class Solution:
         """
         submatrix = [row[j : j + 3] for row in grid[i : i + 3]]
 
+        # 1 
         submatrixNums = {elem for row in submatrix for elem in row}
         cond1 = submatrixNums == set(range(1,10))
 
