@@ -2,43 +2,41 @@ class Solution:
     def myAtoi(self, s: str) -> int:
         res = ""
         digitRead = False
-        
         for c in s:
-            # step 1: skip leading spaces
+            #step 1
             if c == " ":
-                if not res:  # haven’t started reading yet
+                if not res:
                     continue
-                else:  # stop if we already started
+                else:
                     break
             
-            # step 2: handle signs
+            #step 2
             if c in ["-", "+"]:
-                if not res:  # only allowed at the start
+                if not res:
                     res += c
                     continue
                 else:
                     break
 
-            # step 3: handle digits
-            if c.isdigit():
-                res += c
+            #step 3
+            if str.isdigit(c):
+                res += (c)
                 digitRead = True
             else:
                 break
 
-        # step 4: convert to int safely
         if digitRead:
-            try:
-                num = int(res)
-            except ValueError:
-                return 0  # just in case
-
-            # clamp result
-            if num >= 2**31 - 1:
-                return 2**31 - 1
-            elif num < -2**31:
+            res = int(res)
+            if res >= 2**31 -1:
+                return 2**31 -1
+            elif res < -2**31:
                 return -2**31
             else:
-                return num
+                return res
         else:
-            return 0
+            return 0    
+
+
+            
+
+            
