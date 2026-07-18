@@ -3,10 +3,10 @@ class Solution:
         res = []
         heap = []
 
-        for i in range(0, len(nums)):
-            heapq.heappush(heap, (-nums[i], i))
+        for windowEnd in range(0, len(nums)):
+            heapq.heappush(heap, (-nums[windowEnd], windowEnd))
 
-            windowStart = i - k + 1
+            windowStart = windowEnd - k + 1
             #find the max but remove deleted elemts first
             while heap and heap[0][1] < windowStart:
                 val = heapq.heappop(heap)
