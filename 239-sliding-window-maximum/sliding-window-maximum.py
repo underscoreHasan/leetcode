@@ -3,7 +3,6 @@ class Solution:
         res = []
 
         heap = []
-        deleted = set()
 
         #init heap
         for i in range(k):
@@ -12,15 +11,12 @@ class Solution:
 
         #for every startIndex in the sliding window
         for startIndex in range(1, len(nums) - k + 1):
-            #remove the elem that just left the window
-            deleted.add(startIndex - 1)
             #add the element that just joined
             heapq.heappush(heap, (-nums[startIndex + k - 1], startIndex + k - 1))
 
             #find the max but remove deleted elemts first
-            while heap and heap[0][1] in deleted:
+            while heap and heap[0][1] < startIndex:
                 val = heapq.heappop(heap)
-                deleted.remove(val[1])
             
             if heap: res.append(-heap[0][0])
 
